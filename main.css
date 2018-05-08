@@ -32,11 +32,12 @@ body {
     height: 32px;
     width: 100%;
     text-align: center;
+    font-size: 2vmin;
 }
 
 .life {
     flex 1;
-    font-size: calc(calc(100vmin - 64px) / 2 - 64px);
+    font-size: calc(90vmin / 2);
 }
 
 #player2-area {
@@ -44,11 +45,13 @@ body {
 }
 
 .toolbar-area {
-    height: 64px;
+    height: 2vmin;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    backroung-color: black;
+    color: white;
 }
 
 .btn {
