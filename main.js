@@ -1,30 +1,84 @@
-function inc(elm) {
-    var life = parseInt(elm.getElementsByClassName("life").innnerHTML);
-    life++;
-    elm.innnerHTML = life;
-}
+/**
+ * 2P側のライフ表示を上下逆表示にするかのフラグ
+ */
+var isReverse2P = false;
 
-function dec(elm) {
-    var e = elm.getElementsByClassName("life")[0];
+/**
+ * ライフを増やす
+ */
+function inc(event) {
+    var elms = event.target.parentNode.getElementsByClassName("life");
+    var e = elms[0];
     var str = e.innerText;
     var life = parseInt(str);
-    life--;
+    e.innerText = ++life;
+}
+
+/**
+ * ライフを減らす
+ */
+function dec(event) {
+    var elms = event.target.parentNode.getElementsByClassName("life");
+    var e = elms[0];
+    var str = e.innerText;
+    var life = parseInt(str);
+    life = Math.max(0, life - 1);
     e.innerText = life;
 }
 
-function onClickGain(event) {
-    inc(event.target);
+function addClickLostEvent(cls) {
+    var elms = document.getElementsByClassName(cls);
+
+    for (var i = 0; i < elms.length; i++) {
+        var elm = elms[i];
+        elm.addEventListener('click', dec);
+    }
 }
 
-function addClickEvent(id) {
+function addClickGainEvent(cls) {
+    var elms = document.getElementsByClassName(cls);
+
+    for (var i = 0; i < elms.length; i++) {
+        var elm = elms[i];
+        elm.addEventListener('click', inc);
+    }
+}
+
+function addResetEvent(id) {
     var elm = document.getElementById(id);
 
     elm.addEventListener('click', function(event) {
-        dec(elm);
+        var elms = document.getElementsByClassName("life");
+        for (var i = 0; i < elms.length; i++) {
+            var life = elms[i];
+            life.innerText = 20;
+        }
     });
 }
 
+function addReverseEvent(id) {
+    var elm = document.getElementById(id);
+
+    elm.addEventListener('click', function(event) {
+        isReverse2P = !isReverse2P;
+        // rotate変更
+    });
+}
+
+function onOrientationChange() {
+    var elm = document.getElementById("root");
+    if (Math.abs(window.orientation) === 90) {
+    }
+    else {
+    }
+}
+
 window.onload = function() {
-    addClickEvent("player1-area");
-    addClickEvent("player2-area");
+    addClickGainEvent("btn-north");
+    addClickLostEvent("btn-south");
+    addResetEvent("reset-btn");
+    addReverseEvent("reverse-btn");
+
+    window.onorientationchange = onOrientationChange;
+    onOrientationChange();
 }
