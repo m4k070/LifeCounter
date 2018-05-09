@@ -43,6 +43,7 @@ body {
     font-size: calc(82vmin / 2);
     height: calc(82vmin / 2);
     text-align: center;
+    vertical-align: middle;
     width: 100%;
 }
 

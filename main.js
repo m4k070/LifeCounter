@@ -79,6 +79,10 @@ function addReverseEvent(id) {
             e.style.MozTransform = "rotate(180deg)";
             e.style.webkitTransform = "rotate(180deg)";
         }
+        else {
+            e.style.MozTransform = "rotate(0deg)";
+            e.style.webkitTransform = "rotate(0deg)";
+        }
     });
 }
 
@@ -86,10 +90,20 @@ function addReverseEvent(id) {
  *
  */
 function onOrientationChange() {
-    var elm = document.getElementById("root");
+    var root = document.getElementById("root");
+    var toolbar = document.getElementById("toolbar");
+
     if (Math.abs(window.orientation) === 90) {
+        root.style.flexDirection = "row";
+        toolbar.style.height = "100%";
+        toolbar.style.width = "4vmin";
+        toolbar.style.flexDirection = "column";
     }
     else {
+        root.style.flexDirection = "column";
+        toolbar.style.height = "4vmin";
+        toolbar.style.width = "100%";
+        toolbar.style.flexDirection = "row";
     }
 }
 
@@ -99,6 +113,6 @@ window.onload = function() {
     addResetEvent("reset-btn");
     addReverseEvent("reverse-btn");
 
-    window.onorientationchange = onOrientationChange;
+    window.addEventListener("orientationchange", onOrientationChange);
     onOrientationChange();
 }
