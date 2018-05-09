@@ -26,6 +26,9 @@ function dec(event) {
     e.innerText = life;
 }
 
+/**
+ *
+ */
 function addClickLostEvent(cls) {
     var elms = document.getElementsByClassName(cls);
 
@@ -35,6 +38,9 @@ function addClickLostEvent(cls) {
     }
 }
 
+/**
+ *
+ */
 function addClickGainEvent(cls) {
     var elms = document.getElementsByClassName(cls);
 
@@ -44,6 +50,9 @@ function addClickGainEvent(cls) {
     }
 }
 
+/**
+ *
+ */
 function addResetEvent(id) {
     var elm = document.getElementById(id);
 
@@ -56,15 +65,26 @@ function addResetEvent(id) {
     });
 }
 
+/**
+ *
+ */
 function addReverseEvent(id) {
     var elm = document.getElementById(id);
 
     elm.addEventListener('click', function(event) {
         isReverse2P = !isReverse2P;
         // rotate変更
+        var e = document.getElementById("player2-life");
+        if (isReverse2P) {
+            e.style.MozTransform = "rotate(180deg)";
+            e.style.webkitTransform = "rotate(180deg)";
+        }
     });
 }
 
+/**
+ *
+ */
 function onOrientationChange() {
     var elm = document.getElementById("root");
     if (Math.abs(window.orientation) === 90) {
