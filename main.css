@@ -1,70 +1,169 @@
-html,
-body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    margin: 0;
-    padding: 0;
-}
+.flex-row {
+  display: flex;
+  flex-direction: row; }
 
-.root {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    width: 100%;
-}
-
-.area {
-    align-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex: 10;
-    height: 100%;
-    justify-content: center;
-    width: 100%;
-}
-
-.btn-north,
-.btn-south {
-    flex: 1;
-    /*font-size: 4vmin;*/
-    height: 4vmin;
-    text-align: center;
-    width: 100%;
-}
-
-.life {
-    flex 5;
-    font-size: calc(82vmin / 2);
-    height: calc(82vmin / 2);
-    text-align: center;
-    vertical-align: middle;
-    width: 100%;
-}
-
-#player2-life {
-    transform: rotate( 180deg );
-}
-
-.toolbar-area {
-    align-content: center;
-    align-items: center;
-    background-color: black;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    height: 4vmin;
-    justify-content: flex-end;
-    width: 100%;
-}
+.flex-column, html .root .area, html .root-v .area, html .root-h .area,
+body .root .area,
+body .root-v .area,
+body .root-h .area {
+  display: flex;
+  flex-direction: column; }
 
 .btn {
-    flex: 0 1;
-    width: auto;
-}
+  flex: 0 1;
+  width: auto; }
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  margin: 0;
+  padding: 0; }
+  html .root, html .root-v, html .root-h,
+  body .root,
+  body .root-v,
+  body .root-h {
+    justify-content: space-between;
+    height: 100%;
+    width: 100%; }
+    html .root .area, html .root-v .area, html .root-h .area,
+    body .root .area,
+    body .root-v .area,
+    body .root-h .area {
+      align-content: center;
+      align-items: center;
+      flex: 10;
+      height: 100%;
+      justify-content: center;
+      width: 100%; }
+      html .root .area .btn-north, html .root-v .area .btn-north, html .root-h .area .btn-north,
+      html .root .area .btn-south,
+      html .root-v .area .btn-south,
+      html .root-h .area .btn-south,
+      body .root .area .btn-north,
+      body .root-v .area .btn-north,
+      body .root-h .area .btn-north,
+      body .root .area .btn-south,
+      body .root-v .area .btn-south,
+      body .root-h .area .btn-south {
+        flex: 1;
+        height: 4vh;
+        text-align: center;
+        width: 100%; }
+      html .root .area .life, html .root-v .area .life, html .root-h .area .life, html .root .area .life-v, html .root-v .area .life-v, html .root-h .area .life-v, html .root .area .life-h, html .root-v .area .life-h, html .root-h .area .life-h,
+      body .root .area .life,
+      body .root-v .area .life,
+      body .root-h .area .life,
+      body .root .area .life-v,
+      body .root-v .area .life-v,
+      body .root-h .area .life-v,
+      body .root .area .life-h,
+      body .root-v .area .life-h,
+      body .root-h .area .life-h {
+        align-content: center;
+        display: flex;
+        flex: 5;
+        justify-content: center;
+        text-align: center; }
+        html .root .area .life .life-inner, html .root-v .area .life .life-inner, html .root-h .area .life .life-inner, html .root .area .life-v .life-inner, html .root-v .area .life-v .life-inner, html .root-h .area .life-v .life-inner, html .root .area .life-h .life-inner, html .root-v .area .life-h .life-inner, html .root-h .area .life-h .life-inner,
+        body .root .area .life .life-inner,
+        body .root-v .area .life .life-inner,
+        body .root-h .area .life .life-inner,
+        body .root .area .life-v .life-inner,
+        body .root-v .area .life-v .life-inner,
+        body .root-h .area .life-v .life-inner,
+        body .root .area .life-h .life-inner,
+        body .root-v .area .life-h .life-inner,
+        body .root-h .area .life-h .life-inner {
+          flex: 0 0 100%; }
+        html .root .area .life .life-inner-v, html .root-v .area .life .life-inner-v, html .root-h .area .life .life-inner-v, html .root .area .life-v .life-inner-v, html .root-v .area .life-v .life-inner-v, html .root-h .area .life-v .life-inner-v, html .root .area .life-h .life-inner-v, html .root-v .area .life-h .life-inner-v, html .root-h .area .life-h .life-inner-v,
+        body .root .area .life .life-inner-v,
+        body .root-v .area .life .life-inner-v,
+        body .root-h .area .life .life-inner-v,
+        body .root .area .life-v .life-inner-v,
+        body .root-v .area .life-v .life-inner-v,
+        body .root-h .area .life-v .life-inner-v,
+        body .root .area .life-h .life-inner-v,
+        body .root-v .area .life-h .life-inner-v,
+        body .root-h .area .life-h .life-inner-v {
+          font-size: calc(50vh / 2);
+          width: 100%; }
+        html .root .area .life .life-inner-h, html .root-v .area .life .life-inner-h, html .root-h .area .life .life-inner-h, html .root .area .life-v .life-inner-h, html .root-v .area .life-v .life-inner-h, html .root-h .area .life-v .life-inner-h, html .root .area .life-h .life-inner-h, html .root-v .area .life-h .life-inner-h, html .root-h .area .life-h .life-inner-h,
+        body .root .area .life .life-inner-h,
+        body .root-v .area .life .life-inner-h,
+        body .root-h .area .life .life-inner-h,
+        body .root .area .life-v .life-inner-h,
+        body .root-v .area .life-v .life-inner-h,
+        body .root-h .area .life-v .life-inner-h,
+        body .root .area .life-h .life-inner-h,
+        body .root-v .area .life-h .life-inner-h,
+        body .root-h .area .life-h .life-inner-h {
+          font-size: calc(100vh / 2);
+          height: 100%; }
+        html .root .area .life #player2-area, html .root-v .area .life #player2-area, html .root-h .area .life #player2-area, html .root .area .life-v #player2-area, html .root-v .area .life-v #player2-area, html .root-h .area .life-v #player2-area, html .root .area .life-h #player2-area, html .root-v .area .life-h #player2-area, html .root-h .area .life-h #player2-area,
+        body .root .area .life #player2-area,
+        body .root-v .area .life #player2-area,
+        body .root-h .area .life #player2-area,
+        body .root .area .life-v #player2-area,
+        body .root-v .area .life-v #player2-area,
+        body .root-h .area .life-v #player2-area,
+        body .root .area .life-h #player2-area,
+        body .root-v .area .life-h #player2-area,
+        body .root-h .area .life-h #player2-area {
+          transform: rotate(180deg); }
+      html .root .area .life-v, html .root-v .area .life-v, html .root-h .area .life-v,
+      body .root .area .life-v,
+      body .root-v .area .life-v,
+      body .root-h .area .life-v {
+        height: auto;
+        width: 100%; }
+      html .root .area .life-h, html .root-v .area .life-h, html .root-h .area .life-h,
+      body .root .area .life-h,
+      body .root-v .area .life-h,
+      body .root-h .area .life-h {
+        height: 100%;
+        width: auto; }
+    html .root .toolbar, html .root-v .toolbar, html .root-h .toolbar, html .root .toolbar-v, html .root-v .toolbar-v, html .root-h .toolbar-v, html .root .toolbar-h, html .root-v .toolbar-h, html .root-h .toolbar-h,
+    body .root .toolbar,
+    body .root-v .toolbar,
+    body .root-h .toolbar,
+    body .root .toolbar-v,
+    body .root-v .toolbar-v,
+    body .root-h .toolbar-v,
+    body .root .toolbar-h,
+    body .root-v .toolbar-h,
+    body .root-h .toolbar-h {
+      align-content: center;
+      align-items: center;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex: 1; }
+    html .root .toolbar-v, html .root-v .toolbar-v, html .root-h .toolbar-v,
+    body .root .toolbar-v,
+    body .root-v .toolbar-v,
+    body .root-h .toolbar-v {
+      flex-direction: row;
+      height: 4vh;
+      justify-content: flex-end;
+      width: 100%; }
+    html .root .toolbar-h, html .root-v .toolbar-h, html .root-h .toolbar-h,
+    body .root .toolbar-h,
+    body .root-v .toolbar-h,
+    body .root-h .toolbar-h {
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-start;
+      width: 4vw; }
+  html .root-v,
+  body .root-v {
+    display: flex;
+    flex-direction: column; }
+  html .root-h,
+  body .root-h {
+    display: flex;
+    flex-direction: row-reverse; }

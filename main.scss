@@ -1,0 +1,126 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    flex: 0 1;
+    width: auto;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    margin: 0;
+    padding: 0;
+
+    .root {
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+
+        .area {
+            @extend .flex-column;
+            align-content: center;
+            align-items: center;
+            flex: 10;
+            height: 100%;
+            justify-content: center;
+            width: 100%;
+
+            .btn-north,
+            .btn-south {
+                flex: 1;
+                height: 4vh;
+                text-align: center;
+                width: 100%;
+            }
+
+            .life {
+                align-content: center;
+                display: flex;
+                flex: 5;
+                justify-content: center;
+                text-align: center;
+
+                .life-inner {
+                    flex: 0 0 100%;
+                }
+
+                .life-inner-v {
+                    font-size: calc(50vh / 2);
+                    width: 100%;
+                }
+
+                .life-inner-h {
+                    font-size: calc(100vh / 2);
+                    height: 100%;
+                }
+
+                #player2-area {
+                    transform: rotate( 180deg );
+                }
+            }
+
+            .life-v {
+                @extend .life;
+                height: auto;
+                width: 100%;
+            }
+
+            .life-h {
+                @extend .life;
+                height: 100%;
+                width: auto;
+            }
+        }
+
+        .toolbar {
+            align-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex: 1;
+        }
+
+        .toolbar-v {
+            @extend .toolbar;
+            flex-direction: row;
+            height: 4vh;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .toolbar-h {
+            @extend .toolbar;
+            flex-direction: column;
+            height: 100%;
+            justify-content: flex-start;
+            width: 4vw;
+        }
+    }
+
+    .root-v {
+        @extend .root;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .root-h {
+        @extend .root;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+}
+
