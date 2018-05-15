@@ -4,46 +4,48 @@
         <meta charset="UTF-8">
         <title>LifeCounter</title>
         <link rel="stylesheet" type="text/css" href="main.css">
-        <script src="main.js"></script>
+        <!-- 開発バージョン(警告出力とデバッグモードあり) -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     </head>
     <body>
         <!-- root -->
-        <div id="root" class="root-v">
+        <div id="app" v-bind:class="root">
             <!-- player2 -->
-            <div id="player2-area" class="area">
-                <div id="player2-n" class="btn-north">
-                    ▲
+            <div id="player2-area" class="area" v-bind:style="isReverse">
+                <div id="player2-n" class="btn-north" v-on:click="inc(2)">
+                    <div class="inner">▲</div>
                 </div>
-                <div id="player2-life" class="life-v">
-                    <div id="life-2p" class="life-inner life-inner-v">20</div>
+                <div id="player2-life" v-bind:class="life">
+                    <div id="life-2p" v-bind:class="lifeIn">{{life2p}}</div>
                 </div>
-                <div id="player2-s" class="btn-south">
-                    ▼
+                <div id="player2-s" class="btn-south" v-on:click="dec(2)">
+                    <div class="inner">▼</div>
                 </div>
             </div>
 
             <!-- toolbar -->
-            <div id="toolbar" class="toolbar-v">
-                <div id="reverse-btn" class="btn">
+            <div id="toolbar" v-bind:class="toolbar">
+                <div id="reverse-btn" class="btn" v-on:click="reverse2P">
                     ↩
                 </div>
-                <div id="reset-btn" class="btn">
+                <div id="reset-btn" class="btn" v-on:click="reset">
                     ✖
                 </div>
             </div>
 
             <!-- player1 -->
             <div id="player1-area" class="area">
-                <div id="player1-n" class="btn-north">
-                    ▲
+                <div id="player1-n" class="btn-north" v-on:click="inc(1)">
+                    <div class="inner">▲</div>
                 </div>
-                <div id="player1-life" class="life-v">
-                    <div id="life-1p" class="life-inner life-inner-v">20</div>
+                <div id="player1-life" v-bind:class="life">
+                    <div id="life-1p" v-bind:class="lifeIn">{{life1p}}</div>
                 </div>
-                <div id="player1-s" class="btn-south">
-                    ▼
+                <div id="player1-s" class="btn-south" v-on:click="dec(1)">
+                    <div class="inner">▼</div>
                 </div>
             </div>
         </div>
+        <script src="main.js"></script>
     </body>
 </html>

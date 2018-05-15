@@ -13,114 +13,121 @@
     width: auto;
 }
 
-html,
-body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    margin: 0;
-    padding: 0;
-
-    .root {
-        justify-content: space-between;
+html {
+    body {
         height: 100%;
         width: 100%;
+        overflow: hidden;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        margin: 0;
+        padding: 0;
 
-        .area {
-            @extend .flex-column;
-            align-content: center;
-            align-items: center;
-            flex: 10;
+        .root {
+            justify-content: space-between;
             height: 100%;
-            justify-content: center;
             width: 100%;
 
-            .btn-north,
-            .btn-south {
-                flex: 1;
-                height: 4vh;
-                text-align: center;
-                width: 100%;
-            }
-
-            .life {
+            .area {
+                @extend .flex-column;
                 align-content: center;
-                display: flex;
-                flex: 5;
+                align-items: center;
+                flex: 46;
+                height: 100%;
                 justify-content: center;
-                text-align: center;
+                width: 100%;
 
-                .life-inner {
-                    flex: 0 0 100%;
+                .btn-north,
+                .btn-south {
+                    flex: 8;
+                    display: flex;
+                    height: 8vh;
+                    text-align: center;
+                    width: 100%;
+                    justify-content: center;
+                    align-content: center;
+                    flex-direction: column;
+
+                    .inner {
+                        flex: 0 0 auto;
+                    }
                 }
 
-                .life-inner-v {
-                    font-size: calc(50vh / 2);
+                .life {
+                    align-content: center;
+                    display: flex;
+                    flex: 1;
+                    justify-content: center;
+                    text-align: center;
+
+                    .life-inner {
+                        flex: 1;
+                    }
+
+                    .life-inner-v {
+                        @extend .life-inner;
+                        font-size: calc(60vh / 2);
+                        width: 100%;
+                    }
+
+                    .life-inner-h {
+                        @extend .life-inner;
+                        font-size: calc(100vh / 2);
+                        height: 100%;
+                    }
+
+                }
+
+                .life-v {
+                    @extend .life;
+                    height: auto;
                     width: 100%;
                 }
 
-                .life-inner-h {
-                    font-size: calc(100vh / 2);
+                .life-h {
+                    @extend .life;
                     height: 100%;
-                }
-
-                #player2-area {
-                    transform: rotate( 180deg );
+                    width: auto;
                 }
             }
 
-            .life-v {
-                @extend .life;
-                height: auto;
+            .toolbar {
+                align-content: center;
+                align-items: center;
+                background-color: black;
+                color: white;
+                display: flex;
+                flex: 8;
+            }
+
+            .toolbar-v {
+                @extend .toolbar;
+                flex-direction: row;
+                height: 8vh;
+                justify-content: flex-end;
                 width: 100%;
             }
 
-            .life-h {
-                @extend .life;
+            .toolbar-h {
+                @extend .toolbar;
+                flex-direction: column;
                 height: 100%;
-                width: auto;
+                justify-content: flex-start;
+                width: 8vw;
             }
         }
 
-        .toolbar {
-            align-content: center;
-            align-items: center;
-            background-color: black;
-            color: white;
+        .root-v {
+            @extend .root;
             display: flex;
-            flex: 1;
-        }
-
-        .toolbar-v {
-            @extend .toolbar;
-            flex-direction: row;
-            height: 4vh;
-            justify-content: flex-end;
-            width: 100%;
-        }
-
-        .toolbar-h {
-            @extend .toolbar;
             flex-direction: column;
-            height: 100%;
-            justify-content: flex-start;
-            width: 4vw;
         }
-    }
 
-    .root-v {
-        @extend .root;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .root-h {
-        @extend .root;
-        display: flex;
-        flex-direction: row-reverse;
+        .root-h {
+            @extend .root;
+            display: flex;
+            flex-direction: row-reverse;
+        }
     }
 }
-

@@ -1,114 +1,94 @@
-/**
- * 2P側のライフ表示を上下逆表示にするかのフラグ
- */
-var isReverse2P = false;
-/**
- * ライフを増やす
- */
-function inc(event) {
-    var elms = event.target.parentNode.getElementsByClassName("life-inner");
-    var e = elms[0];
-    var str = e.innerText;
-    var life = parseInt(str);
-    e.innerText = ++life;
-}
-/**
- * ライフを減らす
- */
-function dec(event) {
-    var elms = event.target.parentNode.getElementsByClassName("life-inner");
-    var e = elms[0];
-    var str = e.innerText;
-    var life = parseInt(str);
-    life = Math.max(0, life - 1);
-    e.innerText = life;
-}
-/**
- *
- */
-function addClickLostEvent(cls) {
-    var elms = document.getElementsByClassName(cls);
-    for (var i = 0; i < elms.length; i++) {
-        var elm = elms[i];
-        elm.addEventListener('click', dec);
-    }
-}
-/**
- *
- */
-function addClickGainEvent(cls) {
-    var elms = document.getElementsByClassName(cls);
-    for (var i = 0; i < elms.length; i++) {
-        var elm = elms[i];
-        elm.addEventListener('click', inc);
-    }
-}
-/**
- *
- */
-function addResetEvent(id) {
-    var elm = document.getElementById(id);
-    elm.addEventListener('click', function (event) {
-        var elms = document.getElementsByClassName("life-inner");
-        for (var i = 0; i < elms.length; i++) {
-            var life = elms[i];
-            life.innerText = 20;
-        }
-    });
-}
-/**
- *
- */
-function addReverseEvent(id) {
-    var elm = document.getElementById(id);
-    elm.addEventListener('click', function (event) {
-        isReverse2P = !isReverse2P;
-        // rotate変更
-        var e = document.getElementById("player2-area");
-        if (isReverse2P) {
-            e.style.MozTransform = "rotate(180deg)";
-            e.style.webkitTransform = "rotate(180deg)";
-        }
-        else {
-            e.style.MozTransform = "rotate(0deg)";
-            e.style.webkitTransform = "rotate(0deg)";
-        }
-    });
-}
-/**
- *
- */
-function onOrientationChange() {
-    var root = document.getElementById("root");
-    var toolbar = document.getElementById("toolbar");
-    var life1p = document.getElementById("player1-life");
-    var life2p = document.getElementById("player2-life");
-    var life1pIn = document.getElementById("life-1p");
-    var life2pIn = document.getElementById("life-2p");
+var DEFAULT_LIFE = 20;
 
-    if (Math.abs(window.orientation) === 90) {
-        root.className = "root-h";
-        toolbar.className ="toolbar-h";
-        life1p.className = "life-h";
-        life2p.className = "life-h";
-        life1pIn.className = "life-inner life-inner-h";
-        life2pIn.className = "life-inner life-inner-h";
-    }
-    else {
-        root.className = "root-v";
-        toolbar.className ="toolbar-v";
-        life1p.className = "life-v";
-        life2p.className = "life-v";
-        life1pIn.className = "life-inner life-inner-v";
-        life2pIn.className = "life-inner life-inner-v";
-    }
-}
+var app = new Vue({
+    el: '#app',
+    data: {
+        /**
+         * 2P側のライフ表示を上下逆表示にするかのフラグ
+         */
+        isReverse2P: false,
 
-window.onload = function () {
-    addClickGainEvent("btn-north");
-    addClickLostEvent("btn-south");
-    addResetEvent("reset-btn");
-    addReverseEvent("reverse-btn");
-    window.addEventListener("orientationchange", onOrientationChange);
-    onOrientationChange();
-};
+        life1p: DEFAULT_LIFE,
+        life2p: DEFAULT_LIFE,
+
+        normal: {
+            transform: "rotate(0deg)"
+        },
+        reverse: {
+            transform: "rotate(180deg)"
+        }
+    },
+    methods: {
+        /**
+         * ライフを増やす
+         */
+        inc: function (p) {
+            if (p === 1) {
+                this.life1p++;
+            }
+            else if (p === 2) {
+                this.life2p++;
+            }
+        },
+        /**
+         * ライフを減らす
+         */
+        dec: function (p) {
+            if (p === 1) {
+                this.life1p = Math.max(0, this.life1p - 1);
+            }
+            else if (p === 2) {
+                this.life2p = Math.max(0, this.life2p - 1);
+            }
+        },
+        reset: function () {
+            this.life1p = DEFAULT_LIFE;
+            this.life2p = DEFAULT_LIFE;
+        },
+        reverse2P: function () {
+            this.isReverse2P = !this.isReverse2P;
+        }
+    },
+    computed: {
+        root: function() {
+            if (Math.abs(window.orientation) === 90) {
+                return "root-h";
+            }
+            else {
+                return "root-v";
+            }
+        },
+        toolbar: function() {
+            if (Math.abs(window.orientation) === 90) {
+                return "toolbar-h";
+            }
+            else {
+                return "toolbar-v";
+            }
+        },
+        life: function() {
+            if (Math.abs(window.orientation) === 90) {
+                return "life-h";
+            }
+            else {
+                return "life-v";
+            }
+        },
+        lifeIn: function() {
+            if (Math.abs(window.orientation) === 90) {
+                return "life-inner life-inner-h";
+            }
+            else {
+                return "life-inner life-inner-v";
+            }
+        },
+        isReverse: function() {
+            if (this.isReverse2P) {
+                return this.reverse;
+            }
+            else {
+                return this.normal;
+            }
+        }
+    }
+});
