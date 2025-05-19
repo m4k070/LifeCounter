@@ -5,4 +5,4 @@ tasks:
     desc: Build the project
     cmds:
       - echo "Building the project..."
-      - go build -o myapp main.go
+      - sass main.scss main.css
